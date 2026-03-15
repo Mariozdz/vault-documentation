@@ -1,0 +1,48 @@
+site_name: Implementación de vault
+site_url: https://Mariozdz.github.io/vault-documentation/
+
+theme:
+  name: material
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Inicio: index.md
+  - Introducción:
+      - Contexto: 01-introduccion/contexto.md
+      - Problema: 01-introduccion/problema.md
+      - Objetivos: 01-introduccion/objetivos.md
+      - Alcance: 01-introduccion/alcance.md
+  - Fundamentos:
+      - Kubernetes: 02-fundamentos/kubernetes.md
+      - GitOps: 02-fundamentos/gitops.md
+      - Zero Trust: 02-fundamentos/zero-trust.md
+      - Gestión de secretos: 02-fundamentos/secretos.md
+  - Análisis:
+      - Riesgos: 03-analisis/riesgos-kubernetes.md
+      - Herramientas: 03-analisis/herramientas-analizadas.md
+  - Marco de referencia:
+      - Visión general: 04-marco-de-referencia/vision-general.md
+      - Principios rectores: 04-marco-de-referencia/principios-rectores.md
+      - Dominios: 04-marco-de-referencia/dominios.md
+      - Arquitectura: 04-marco-de-referencia/arquitectura-referencia.md
+      - Proceso: 04-marco-de-referencia/proceso-implementacion.md
+      - Controles mínimos: 04-marco-de-referencia/controles-minimos.md
+  - Implementación:
+      - Entorno: 05-implementacion/entorno.md
+      - Bootstrap: 05-implementacion/bootstrap.md
+      - Vault: 05-implementacion/vault.md
+      - Políticas: 05-implementacion/politicas.md
+      - App demo: 05-implementacion/app-demo.md
+  - Validación:
+      - Criterios: 06-validacion/criterios.md
+      - Escenarios: 06-validacion/escenarios.md
+      - Resultados: 06-validacion/resultados.md
+  - Conclusiones:
+      - Conclusiones: 07-conclusiones/conclusiones.md
+      - Trabajo futuro: 07-conclusiones/trabajo-futuro.md
