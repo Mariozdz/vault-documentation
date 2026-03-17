@@ -91,7 +91,158 @@ spec:
 
 ## Implementación de High Avaiability
 
-## Implementación de raft
+La implementación de alta disponibilidad (High Availability, HA) en el gestor de secretos se configuró con el objetivo de establecer una arquitectura resiliente, capaz de tolerar fallos y garantizar la continuidad del servicio dentro del entorno Kubernetes. Dado que el gestor de secretos constituye un componente crítico para la operación del sistema, su disponibilidad resulta fundamental para el correcto funcionamiento de los mecanismos de autenticación y acceso a credenciales.
+
+Para este fin, se utilizó el modo de despliegue en alta disponibilidad proporcionado por el chart oficial del gestor de secretos, habilitando la configuración distribuida mediante el uso de almacenamiento integrado basado en Raft.
+
+### Configuración aplicada
+
+La configuración del sistema se definió mediante un archivo values.yaml, en el cual se habilitó el modo HA y el almacenamiento distribuido:
+
+``` yaml
+ha:
+  enabled: true
+  replicas: 1
+  raft:
+    enabled: true
+    setNodeId: true
+```
+
+Adicionalmente, se configuró el uso de almacenamiento persistente:
+
+``` yaml
+dataStorage:
+  enabled: true
+  size: 1Gi
+```
+
+La comunicación entre nodos y clientes se aseguró mediante TLS:
+
+```hcl
+listener "tcp" {
+  address = "0.0.0.0:8200"
+  cluster_address = "0.0.0.0:8201"
+
+  tls_cert_file = "/vault/ssl/tls.crt"
+  tls_key_file = "/vault/ssl/tls.key"
+  
+  tls_client_ca_file = "/vault/ssl/ca.crt"
+  tls_disable_client_certs = "false"
+}
+```
+
+Esta configuración permite:
+
+- Asegurar comunicaciones cifradas
+
+- Habilitar autenticación basada en certificados (mTLS)
+
+- Establecer una base para un clúster distribuido
+
+!!! nota
+    En el entorno de implementación, la configuración se ejecutó con una única réplica, lo cual limita el comportamiento completo de alta disponibilidad. No obstante, la configuración se encuentra preparada para escalar a múltiples nodos, permitiendo validar el modelo de arquitectura propuesto.
+
+### Flujo de operación actual listo para escalar
+
+```mermaid
+flowchart TD
+    Client["Aplicación"]
+    Service["Servicio Kubernetes"]
+    Vault["Instancia Vault"]
+
+    Client --> Service
+    Service --> Vault
+```
+
+En el escenario implementado, las solicitudes de las aplicaciones son dirigidas hacia el servicio expuesto en Kubernetes, el cual enruta el tráfico hacia la instancia disponible del gestor de secretos.
+
+En un escenario completo de alta disponibilidad, múltiples instancias participarían en el clúster, permitiendo la elección automática de un nodo líder y la continuidad del servicio ante fallos.
+
+### Escenario completo de alta disponibilidad.
+
+```mermaid
+flowchart TD
+    Client["Aplicación"]
+    Service["Servicio Kubernetes"]
+    Leader["Nodo líder"]
+    F1["Nodo seguidor"]
+    F2["Nodo seguidor"]
+
+    Client --> Service
+    Service --> Leader
+
+    Leader --> F1
+    Leader --> F2
+
+    F1 -. Replicación .- Leader
+    F2 -. Replicación .- Leader
+```
+
+Las solicitudes de las aplicaciones son dirigidas al servicio del clúster, el cual distribuye el tráfico hacia las instancias disponibles. Las operaciones son procesadas por el nodo líder, mientras que los nodos seguidores mantienen una copia del estado actual.
+
+En caso de fallo, uno de los nodos seguidores tomará su rol de manera automática, garantizando la continuidad del servicio sin intervención manual.
+
+### Consideraciones de diseño para HA
+
+La configuración adoptada permite establecer una base compatible con alta disponibilidad, integrando almacenamiento persistente, comunicación segura y mecanismos de orquestación propios de Kubernetes. Aunque la implementación se realizó con una única réplica, el diseño es escalable y se alinea con los principios de resiliencia definidos en la arquitectura de referencia.
+
+## Implementación de Raft
+
+El almacenamiento distribuido del gestor de secretos se implementó utilizando el backend integrado basado en el protocolo Raft, el cual permite mantener la consistencia del estado entre múltiples nodos sin depender de sistemas externos de persistencia.
+
+Raft es un algoritmo de consenso diseñado para sistemas distribuidos, que coordina múltiples nodos mediante la elección de un líder responsable de procesar operaciones de escritura y replicar los cambios hacia los nodos seguidores.
+
+### Configuración aplicada
+
+El backend de almacenamiento se definió de la siguiente manera:
+
+```hcl
+storage "raft" {
+  path = "/vault/data"
+}
+```
+
+Además, se configuró el registro del servicio dentro del clúster Kubernetes:
+
+```hcl
+service_registration "kubernetes" {}
+```
+
+Esta configuración permite:
+
+- Persistencia de datos en cada nodo
+
+- Integración nativa con Kubernetes
+
+- Base para replicación distribuida
+
+### Flujo de consenso y replicación
+
+```mermaid
+flowchart LR
+    Client["Aplicación"]
+    Leader["Nodo líder"]
+    F1["Nodo seguidor"]
+    F2["Nodo seguidor"]
+
+    Client --> Leader
+
+    Leader --> F1
+    Leader --> F2
+
+    Leader -- "Commit log" --> F1
+    Leader -- "Commit log" --> F2
+```
+
+En un escenario completo de múltiples nodos, todas las operaciones de escritura son dirigidas al nodo líder. Este nodo registra los cambios en un log distribuido y los replica hacia los nodos seguidores. Una vez que la mayoría de los nodos confirma la operación, el cambio se considera comprometido (committed).
+
+Este proceso garantiza que todos los nodos mantengan un estado consistente, incluso en escenarios donde uno o más nodos fallen.
+
+En el entorno implementado, al existir una única réplica, el nodo actúa de forma autónoma, manteniendo el estado local sin necesidad de replicación. Sin embargo, la configuración se encuentra preparada para escalar a un clúster distribuido.
+
+### Consideraciones de diseño
+
+El uso de Raft como backend de almacenamiento permite simplificar la arquitectura al eliminar la dependencia de sistemas externos y proporciona un mecanismo robusto de consistencia y replicación. Este enfoque mejora la portabilidad del sistema y facilita su despliegue en entornos Kubernetes bajo un modelo GitOps.
 
 ## Inicialización de la bóveda
 

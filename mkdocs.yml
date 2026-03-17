@@ -39,6 +39,7 @@ nav:
       - Entorno: 05-implementacion/entorno.md
       - Bootstrap: 05-implementacion/bootstrap.md
       - Vault: 05-implementacion/vault.md
+      - Cert-Manager: 05-implementacion/cert-manager.md
       - Políticas: 05-implementacion/politicas.md
       - App demo: 05-implementacion/app-demo.md
   - Validación:
