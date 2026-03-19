@@ -1,0 +1,7 @@
+/* extra-styles.css */
+.md-typeset .md-typeset__table {
+    display: block;
+}
+.md-typeset__table table:not([class]) {
+    display: table;
+}

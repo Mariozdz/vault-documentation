@@ -67,14 +67,17 @@ flowchart LR
 
 ## Principales componentes
 
+
 | Componente      | Función                                |
-| --------------- | -------------------------------------- |
+| :---------------: | :--------------------------------------: |
 | Kubernetes      | Plataforma de orquestación             |
 | Argo CD         | Automatización GitOps                  |
 | Cilium          | Seguridad de red y microsegmentación   |
 | OpenBao / Vault | Gestión centralizada de secretos       |
 | cert-manager    | Gestión de certificados                |
 | Git             | Fuente de verdad de la infraestructura |
+
+
 
 ## Estructura de la documentación
 
