@@ -57,5 +57,5 @@ Para abordar los desafíos asociados a la gestión de secretos, se han desarroll
 
 ## Referencias
 
-1. https://www.ibm.com/think/topics/secrets-management
+1. IBM. “What is Secrets Management?” IBM Think Blog. Disponible en: https://www.ibm.com/think/topics/secrets-management
 

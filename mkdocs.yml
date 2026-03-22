@@ -27,10 +27,11 @@ nav:
       - Kubernetes: 02-fundamentos/kubernetes.md
       - GitOps: 02-fundamentos/gitops.md
       - Zero Trust: 02-fundamentos/zero-trust.md
+      - Networking y eBPF: 02-fundamentos/networking-ebpf.md
       - Gestión de secretos: 02-fundamentos/secretos.md
-  - Análisis:
-      - Riesgos: 03-analisis/riesgos-kubernetes.md
-      - Herramientas: 03-analisis/herramientas-analizadas.md
+#   - Análisis:
+#       - Riesgos: 03-analisis/riesgos-kubernetes.md
+#       - Herramientas: 03-analisis/herramientas-analizadas.md
   - Marco de referencia:
       - Visión general: 04-marco-de-referencia/vision-general.md
       - Principios rectores: 04-marco-de-referencia/principios-rectores.md
