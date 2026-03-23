@@ -1,0 +1,15 @@
+# Planteamiento del problema
+
+El crecimiento en la adopción de arquitecturas cloud-native, particularmente en entornos basados en Kubernetes, ha incrementado la complejidad en la gestión de aplicaciones y su seguridad. Este fenómeno es especialmente relevante en América Latina, donde la transformación digital avanza de forma acelerada, pero con niveles de madurez en ciberseguridad aún en desarrollo.
+
+En estos entornos, las aplicaciones requieren interactuar constantemente entre sí y acceder a recursos sensibles, lo que implica el uso continuo de credenciales, tokens y otros secretos. Sin embargo, en la práctica, muchas organizaciones continúan utilizando mecanismos tradicionales y nativos para la gestión de estos elementos, tales como el almacenamiento de secretos en recursos nativos de Kubernetes, variables de entorno o archivos de configuración.
+
+Aunque Kubernetes provee funcionalidades básicas para la gestión de secretos, estas no están diseñadas para satisfacer completamente los requerimientos actuales de seguridad en sistemas distribuidos, tales como la rotación dinámica de credenciales, la auditoría de accesos, la segregación de permisos o la gestión centralizada. Como consecuencia, el uso inadecuado de estos mecanismos puede derivar en la exposición de información sensible y en la ampliación de la superficie de ataque.
+
+Por otro lado, existen soluciones especializadas para la gestión segura de secretos que permiten abordar estas limitaciones. No obstante, su implementación suele implicar una mayor complejidad técnica, integración de múltiples componentes y, en algunos casos, costos asociados o dependencia de proveedores. Esta situación representa una barrera significativa para organizaciones con recursos limitados o menor nivel de especialización técnica, como ocurre en muchos contextos de América Latina.
+
+Adicionalmente, la adopción de enfoques modernos de seguridad, como el modelo Zero Trust, junto con prácticas de automatización basadas en GitOps, requiere la integración coherente de herramientas, procesos y políticas. Sin embargo, actualmente no existe una guía clara y estructurada que facilite la implementación de estos enfoques de manera integrada, accesible y replicable en entornos Kubernetes.
+
+En consecuencia, se identifica una brecha entre las capacidades necesarias para gestionar de forma segura los secretos en arquitecturas modernas y la capacidad de las organizaciones para implementar dichas soluciones de manera eficiente y sostenible.
+
+Ante esta problemática, surge la necesidad de definir un marco de referencia que permita integrar de forma automatizada la infraestructura, los mecanismos de identidad y los controles de acceso necesarios para el consumo seguro de secretos, tanto para aplicaciones desplegadas dentro del clúster como para aquellas que acceden a través de interfaces externas, utilizando herramientas accesibles y alineadas con buenas prácticas de seguridad.
