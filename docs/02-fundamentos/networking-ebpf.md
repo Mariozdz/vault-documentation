@@ -25,6 +25,16 @@ Una vez cargados, los programas eBPF son capaces de:
 
 Este modelo permite trasladar parte de la lógica de red y seguridad desde el espacio de usuario hacia el kernel, mejorando la eficiencia y reduciendo la latencia en el procesamiento de datos.
 
+## Seguridad en eBPF
+
+Uno de los aspectos más relevantes de eBPF es su capacidad de ejecutar código dentro del kernel de Linux manteniendo garantías de seguridad. Dado que esta tecnología permite extender el comportamiento del sistema operativo, su diseño incorpora múltiples mecanismos para preservar la integridad y estabilidad del sistema.
+
+En primer lugar, la carga de programas eBPF se encuentra restringida a procesos con privilegios elevados o capacidades específicas, lo que impide que código no autorizado sea ejecutado en el kernel.
+
+Adicionalmente, todos los programas deben pasar por un proceso de verificación previo a su ejecución. Este mecanismo analiza el comportamiento del programa y asegura que cumpla condiciones como la terminación garantizada, el uso correcto de memoria y la ausencia de operaciones inválidas, evitando la ejecución de código potencialmente peligroso.
+
+Finalmente, eBPF limita el acceso a la memoria del kernel mediante un modelo de ejecución controlado, en el cual los programas solo pueden interactuar con el sistema a través de interfaces definidas. Esto garantiza que las operaciones realizadas estén acotadas a su contexto y no comprometan otros componentes del sistema.
+
 ## Aplicaciones en entornos Kubernetes
 
 En Kubernetes, eBPF se ha convertido en una tecnología clave para habilitar soluciones avanzadas de networking y seguridad. Su uso facilita superar algunas limitaciones de los modelos tradicionales basados en iptables o reglas estáticas, facilitando la implementación de políticas dinámicas y contextuales.
@@ -67,6 +77,14 @@ De esta manera, eBPF actúa como un facilitador tecnológico que fortalece la ca
 
 ## Referencias
 
-1. eBPF Foundation. "What is eBPF?" Disponible en: https://ebpf.io/what-is-ebpf/
-2. eBPF Documentation. "Linux eBPF documentation". Disponible en: https://docs.ebpf.io/linux/
-3. Cilium. "Zero Trust Networking with Cilium". Disponible en: https://cilium.io/outcomes/zero-trust/
+**eBPF Foundation.**  
+*What is eBPF?*  
+Disponible en: [Ver documentación](https://ebpf.io/what-is-ebpf/)
+
+**eBPF Documentation.**  
+*Linux eBPF documentation.*  
+Disponible en: [Ver documentación](https://docs.ebpf.io/linux/)
+
+**Cilium.**  
+*Zero Trust Networking with Cilium.*  
+Disponible en: [Ver artículo](https://cilium.io/outcomes/zero-trust/)

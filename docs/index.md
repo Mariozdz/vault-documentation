@@ -2,6 +2,10 @@
 
 Este proyecto tiene como propósito presentar un marco de referencia base para la gestión sencilla, automatizada y segura de secretos basada en un entorno de Kubernetes, utilizando principios de GitOps, Zero Trust y automatización de configuraciones e infraestructura de manera declarativa.
 
+En este contexto, la seguridad y gestión de la comunicación entre servicios constituye un elemento clave dentro de arquitecturas distribuidas. Existen diferentes enfoques para abordar este problema, como el uso de service mesh, los cuales permiten gestionar el tráfico entre servicios mediante proxies y control centralizado. Sin embargo, estos mecanismos pueden introducir sobrecarga operativa y de rendimiento debido a la incorporación de componentes intermediarios en la comunicación.
+
+Como alternativa, el uso de tecnologías basadas en eBPF permite implementar controles de red, observabilidad y seguridad directamente en el kernel del sistema operativo, reduciendo la necesidad de intermediarios y mejorando la eficiencia en el procesamiento del tráfico. Este enfoque resulta particularmente adecuado para entornos Kubernetes que requieren alto rendimiento, escalabilidad y control granular de las comunicaciones entre workloads.
+
 ## Problema abordado
 
 En entornos Kubernetes tradicionales, la gestión de secretos (si no se implementa otro servicio) depende del recurso nativo Secret, el cual no proporciona mecanismos suficientes para garantizar procesos como control granular de acceso (se comparte a nivel de namespace), auditoria, rotación segura y trazabilidad sin exposición. 
@@ -11,6 +15,8 @@ Lo mismo sucede en aplicaciones web que almacenan información sensible en archi
 Muchas veces los mecanismos anteriormente descritos son utilizados por distintas razones como falta de interés en manejo de secretos, curva de aprendizaje grande para la implementación de servicios de terceros, costos elevados o prioridad de gastos e incluso por desconocimiento de los riesgos que el uso de dichos mecanismos implica. 
 
 Por esto es importante crear una plataforma sencilla de implementar que permita tener un control más  seguro de la información sensible y que esté al alcance de organizaciones en distintos contextos como por ejemplo instituciones gubernamentales que carezcan de este tipo de controles y Pymes.
+
+Para más detalles sobre el contexto y problema puede dirigirse [aquí](01-introduccion/contexto.md)
 
 ## Propuesta del proyecto
 

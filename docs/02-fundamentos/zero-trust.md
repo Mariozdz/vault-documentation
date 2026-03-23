@@ -58,8 +58,10 @@ El modelo Zero Trust constituye un elemento central dentro del marco de referenc
 
 En particular, este enfoque se refleja en la separación entre identidad y red, la utilización de mecanismos de autenticación fuerte para workloads, clientes externos y la aplicación de políticas de acceso granulares tanto en el gestor de secretos como a nivel de red dentro del entorno de Kubernetes. Este modelo permite que el acceso a los recursos no dependa de la ubicación dentro de la red, sino de la verificación continua de la identidad y del contexto de cada solicitud.
 
-De esta manera, Zero Trust proporciona la base conceptual que permite integrar de forma coherente la automatización de infraestructura, la gestión de secretos y los controles de seguridad en entornos Kubernetes, alineando los componentes del sistema con un modelo de seguridad basado en identidad y definición de políticas.
+De esta manera, Zero Trust proporciona la base conceptual que permite integrar de forma coherente la automatización de infraestructura, la gestión de secretos y los controles de seguridad en entornos Kubernetes, alineando los componentes del sistema con un modelo de seguridad basado en identidad y definición de políticas [2].
 
 ## Referencias
 
 1. National Institute of Standards and Technology (NIST). Zero Trust Architecture (NIST Special Publication 800-207). 2020. Disponible en: https://doi.org/10.6028/NIST.SP.800-207
+2. A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Location Environments (NIST SP 800-207A). 2023.
+Disponible en: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207A.pdf

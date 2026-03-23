@@ -59,7 +59,18 @@ Ambos enfoques buscan mitigar los riesgos asociados al almacenamiento de informa
 
 ## Referencias
 
-1. OpenGitOps. “OpenGitOps Principles.” Disponible en: https://opengitops.dev/
-2. IBM. “What is GitOps?” IBM Think Blog, 2025. Disponible en: https://www.ibm.com/think/topics/gitops
-3. GitLab. “GitOps.” GitLab Topics, 2025. Disponible en: https://about.gitlab.com/topics/gitops/
-4. Vaibhav, V. “Scaling GitOps in the enterprise: Secure secrets, policy as code, and multi-cluster strategies.” DEV Community. Disponible en: https://dev.to/vaib/scaling-gitops-in-the-enterprise-secure-secrets-policy-as-code-and-multi-cluster-strategies-6hb
+**OpenGitOps.**  
+*OpenGitOps Principles.*  
+Disponible en: [Ver principios](https://opengitops.dev/)
+
+**IBM.**  
+*What is GitOps?* IBM Think Blog, 2025.  
+Disponible en: [Leer artículo](https://www.ibm.com/think/topics/gitops)
+
+**GitLab.**  
+*GitOps.* GitLab Topics, 2025.  
+Disponible en: [Ver documentación](https://about.gitlab.com/topics/gitops/)
+
+**Vaibhav, V.**  
+*Scaling GitOps in the enterprise: Secure secrets, policy as code, and multi-cluster strategies.* DEV Community.  
+Disponible en: [Leer artículo](https://dev.to/vaib/scaling-gitops-in-the-enterprise-secure-secrets-policy-as-code-and-multi-cluster-strategies-6hb)

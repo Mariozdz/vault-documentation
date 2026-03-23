@@ -82,3 +82,9 @@ El uso de Kubernetes en entornos distribuidos introduce múltiples desafíos rel
 
 En particular, la gestión de secretos se presenta como un problema crítico, ya que las aplicaciones requieren acceso a credenciales para su funcionamiento, pero su almacenamiento y distribución deben realizarse de forma segura.
 
+## Referencias
+
+**Kubernetes.**  
+*Kubernetes Documentation.*  
+Disponible en: [Ver documentación](https://kubernetes.io/)
+
