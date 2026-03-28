@@ -8,15 +8,15 @@ Sin embargo, este crecimiento ha traído consigo un incremento significativo en 
 
 ## Incremento de amenazas y desafíos de seguridad
 
-Paralelamente, diversos estudios han evidenciado que América Latina se ha consolidado como una de las regiones más afectadas por incidentes de ciberseguridad a nivel global, a pesar de presentar niveles de preparación relativamente bajos en comparación con otras regiones. Este fenómeno se ve acentuado por el alto nivel de conectividad digital, que incrementa significativamente la superficie de ataque disponible [a].
+Paralelamente, diversos estudios han evidenciado que América Latina se ha consolidado como una de las regiones más afectadas por incidentes de ciberseguridad a nivel global, a pesar de presentar niveles de preparación relativamente bajos en comparación con otras regiones. Este fenómeno se ve acentuado por el alto nivel de conectividad digital, que incrementa significativamente la superficie de ataque disponible [1].
 
-En este contexto, el crecimiento en la adopción de arquitecturas basadas en APIs y servicios distribuidos ha ampliado considerablemente los vectores de ataque. Las APIs, al ser un componente fundamental en la comunicación entre aplicaciones, se han convertido en un objetivo prioritario para los atacantes, quienes buscan explotar vulnerabilidades para acceder a datos sensibles o interrumpir servicios críticos [b].
+En este contexto, el crecimiento en la adopción de arquitecturas basadas en APIs y servicios distribuidos ha ampliado considerablemente los vectores de ataque. Las APIs, al ser un componente fundamental en la comunicación entre aplicaciones, se han convertido en un objetivo prioritario para los atacantes, quienes buscan explotar vulnerabilidades para acceder a datos sensibles o interrumpir servicios críticos [2].
 
-De acuerdo con reportes recientes, la región ha experimentado un incremento significativo en ataques dirigidos a aplicaciones web y APIs, pasando de cientos de miles de incidentes a miles de millones en un corto periodo de tiempo, lo que evidencia una rápida evolución en la sofisticación y escala de las amenazas [b].
+De acuerdo con reportes recientes, la región ha experimentado un incremento significativo en ataques dirigidos a aplicaciones web y APIs, pasando de cientos de miles de incidentes a miles de millones en un corto periodo de tiempo, lo que evidencia una rápida evolución en la sofisticación y escala de las amenazas [2].
 
-Este tipo de ataques puede derivar en brechas de datos, interrupciones del servicio, pérdidas financieras y daños reputacionales, afectando tanto a organizaciones privadas como a entidades gubernamentales que dependen de sistemas interconectados para su operación (Akamai, 2024).
+Este tipo de ataques puede derivar en brechas de datos, interrupciones del servicio, pérdidas financieras y daños reputacionales, afectando tanto a organizaciones privadas como a entidades gubernamentales que dependen de sistemas interconectados para su operación [2].
 
-Adicionalmente, el informe de ciberseguridad 2025 del Banco Interamericano de Desarrollo y la Organización de los Estados Americanos señala que la región enfrenta desafíos estructurales relacionados con la madurez en seguridad, incluyendo limitaciones en recursos, talento especializado y coordinación entre sectores [c].
+Adicionalmente, el informe de ciberseguridad 2025 del Banco Interamericano de Desarrollo y la Organización de los Estados Americanos señala que la región enfrenta desafíos estructurales relacionados con la madurez en seguridad, incluyendo limitaciones en recursos, talento especializado y coordinación entre sectores [3].
 
 Esta combinación de mayor dependencia tecnológica, aumento en la exposición de servicios y limitaciones en la implementación de controles de seguridad adecuados dificulta la protección efectiva de los sistemas frente a amenazas cada vez más sofisticadas.
 
