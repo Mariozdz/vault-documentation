@@ -6,7 +6,6 @@ Nebula se incorpora como una tecnología de conectividad privada que permite com
 
 Esta sección presenta los fundamentos conceptuales de Nebula, su forma general de operación y las razones por las cuales puede utilizarse como una capa complementaria dentro de una arquitectura segura para la gestión de secretos.
 
----
 
 ## ¿Qué es Nebula?
 
@@ -37,13 +36,13 @@ Cada nodo de Nebula utiliza un certificado propio. Este certificado identifica a
 
 Un certificado de Nebula puede contener información como:
 
-```text
-Nombre del nodo
-Dirección IP dentro de la red overlay
-Grupos asociados
-Subredes permitidas
-Vigencia del certificado
-```
+
+- Nombre del nodo
+- Dirección IP dentro de la red overlay
+- Grupos asociados
+- Subredes permitidas
+- Vigencia del certificado
+
 
 Estos atributos pueden utilizarse posteriormente para aplicar reglas de firewall basadas en identidad. Por ejemplo, se puede permitir que únicamente los nodos pertenecientes al grupo `client` se conecten al puerto `8200` de un gateway asociado a Vault.
 
@@ -62,11 +61,10 @@ La red overlay es la red lógica privada creada por Nebula. Cada nodo recibe una
 
 Por ejemplo:
 
-```text
-Lighthouse:     10.10.0.1
-Vault Gateway:  10.10.0.10
-Client Gateway: 10.10.0.20
-```
+
+- Lighthouse:     10.10.0.1
+- Vault Gateway:  10.10.0.10
+- Client Gateway: 10.10.0.20
 
 Aunque estos nodos estén ubicados en redes diferentes, Nebula permite que se comuniquen a través de la red overlay usando túneles cifrados.
 
@@ -75,13 +73,12 @@ Aunque estos nodos estén ubicados en redes diferentes, Nebula permite que se co
 
 Nebula incluye reglas de firewall que permiten controlar qué tráfico puede entrar o salir de cada nodo. Estas reglas pueden basarse en elementos como:
 
-```text
-Host
-Grupo
-Puerto
-Protocolo
-CIDR
-```
+
+- Host
+- Grupo
+- Puerto
+- Protocolo
+- CIDR
 
 Esto permite aplicar controles de mínimo privilegio. En lugar de permitir conectividad general entre todos los nodos, se pueden definir reglas específicas para permitir únicamente los flujos necesarios.
 
@@ -109,22 +106,6 @@ El funcionamiento general de Nebula puede resumirse de la siguiente manera:
 6. Las reglas de firewall definen qué comunicación está permitida.
 7. El tráfico fluye por la red overlay sin exponer directamente los servicios internos.
 
-```mermaid
-flowchart LR
-    CA["CA de Nebula"] --> Certs["Certificados de nodo"]
-
-    Certs --> Lighthouse["Lighthouse"]
-    Certs --> NodeA["Nodo A"]
-    Certs --> NodeB["Nodo B"]
-
-    NodeA -. "descubrimiento" .-> Lighthouse
-    NodeB -. "descubrimiento" .-> Lighthouse
-
-    NodeA -. "túnel cifrado overlay" .-> NodeB
-```
-
----
-
 ## Relación con Zero Trust
 
 Nebula se alinea con los principios de Zero Trust porque evita asumir que la red interna es automáticamente confiable. En su lugar, cada nodo debe demostrar su identidad mediante un certificado válido.
@@ -138,19 +119,6 @@ Dentro de este enfoque:
 - Las reglas pueden modelarse bajo el principio de mínimo privilegio.
 
 Nebula no reemplaza otros controles de seguridad como TLS de aplicación, autenticación, autorización o políticas de red dentro de Kubernetes. Más bien, funciona como una capa adicional de conectividad privada y control de acceso entre entornos.
-
-```mermaid
-flowchart TB
-    Identity["Identidad criptográfica<br/>certificado Nebula"]
-    Overlay["Red overlay cifrada"]
-    Firewall["Firewall basado en host/grupo"]
-    AppSecurity["Controles de aplicación<br/>TLS, auth, políticas"]
-
-    Identity --> Overlay
-    Overlay --> Firewall
-    Firewall --> AppSecurity
-```
-
 
 ## ¿Por qué utilizar Nebula?
 
@@ -175,19 +143,6 @@ Una opción común para acceder a servicios dentro de Kubernetes es publicarlos 
 
 Nebula permite una alternativa donde el servicio se mantiene interno y solo se habilita acceso mediante la red overlay.
 
-```mermaid
-flowchart LR
-    subgraph PublicExposure["Exposición pública"]
-        Internet["Internet"] --> Ingress["Ingress / LoadBalancer"]
-        Ingress --> VaultA["Vault"]
-    end
-
-    subgraph PrivateOverlay["Conectividad privada"]
-        Client["Cliente autorizado"] -. "Nebula overlay" .-> Gateway["Gateway privado"]
-        Gateway --> VaultB["Vault interno"]
-    end
-```
-
 ## Rol dentro de una arquitectura de gestión de secretos
 
 En una arquitectura orientada a la gestión segura de secretos, Nebula no cumple la función de almacenar, emitir o rotar secretos. Su función es proporcionar una ruta de conectividad privada entre los consumidores autorizados y el sistema encargado de gestionar los secretos.
@@ -203,7 +158,6 @@ Por tanto, Nebula se ubica en la capa de conectividad segura entre entornos, mie
 | Conectividad entre entornos | Nebula | Crear túneles privados cifrados entre nodos o gateways |
 | Automatización | GitOps / Argo CD | Mantener configuración versionada y reproducible |
 
----
 
 ## Consideraciones de seguridad
 
