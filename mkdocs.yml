@@ -29,6 +29,7 @@ nav:
       - Zero Trust: 02-fundamentos/zero-trust.md
       - Networking y eBPF: 02-fundamentos/networking-ebpf.md
       - Gestión de secretos: 02-fundamentos/secretos.md
+      - Conectividad privada con Nebula: 02-fundamentos/nebula.md
 #   - Análisis:
 #       - Riesgos: 03-analisis/riesgos-kubernetes.md
 #       - Herramientas: 03-analisis/herramientas-analizadas.md
@@ -45,6 +46,7 @@ nav:
       - Vault: 05-implementacion/vault.md
       - Cert-Manager: 05-implementacion/cert-manager.md
       - Políticas: 05-implementacion/politicas.md
+      - Nebula: 05-implementacion/nebula.md
       - App demo: 05-implementacion/app-demo.md
   - Validación:
       - Criterios: 06-validacion/criterios.md

@@ -26,7 +26,24 @@ nodes:
   - role: worker
 ```  
 
-Una vez aplicado este archivo de configuración, el clúster tendrá listo un nodo para comenzar la inicialización de la plataforma de gestión de secretos.
+### K3S
+
+Para inicializar un clúster con K3s de manera basica y comptible con Cilium, se propone el siguiente script:
+
+```bash
+curl -sfL https://get.k3s.io | sh -s - server \
+  --flannel-backend=none \
+  --disable-network-policy \
+  --disable traefik \
+  --disable servicelb
+
+mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $USER:$USER ~/.kube/config
+chmod 600 ~/.kube/config
+```  
+
+Una vez aplicado este archivo de script, el clúster tendrá listo un nodo de plano de control para comenzar la inicialización de la plataforma de gestión de secretos.
 
 ## Despliegue del motor de GitOps
 
@@ -35,11 +52,30 @@ Esta implementación utiliza por defecto el motor de GitOps [ArgoCD](https://arg
 Existen distintas maneras de inicializar ArgoCD, sin embargo, la manera mas sencilla y recomendada es la ejecución de los comandos:
 
 ```bash
-kubectl create namespace argocd
-kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+chmod +x bootstrap/kind/03-install-argocd.sh
+./bootstrap/scripts/03-install-argocd.sh
 ```
 
 La documentación oficial de ArgoCD provee mas detalles acerca de la instalación inicial [ArgoCD Getting Started](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+
+### Configurar ArgoCD
+Configurar acceso:
+
+El primer paso recomendado es accerder a la UI de ArgoCD, ingresar con las credenciales presentadas por el resultado del script y cambiar la contraseña de administración (se pueden asignar roles y usuarios mas adelante).
+
+Configurar repositorio (para este caso se utiliza la url HTTPS del repo de Gitlab, de igual manera puede cambiarse mas adelante):
+
+Crear un token personal y granular con los permisos para leer el repo, no se neceita de mas.
+Reemplazar las variables y ejecutar el siguiente comando en el cluster:
+
+```bash
+
+    kubectl create secret generic repo-gitops -n argocd --from-literal=type=git --from-literal=url=https://gitlab.com/gotouchcr/opendid/did-infrastructre/opendid-vault/core-vault.git --from-literal=username=<username> --from-literal=password=<Token>
+
+    kubectl label secret secret repo-gitops -n argocd argocd.argoproj.io/secret-type=repository
+```
+
+Una vez realizada la configuración de ArgoCD se puede continuar con el bootstrap de las applicaciones.
 
 ## Sincronización de componentes
 
@@ -47,8 +83,8 @@ Una vez instalado ArgoCD, es posible comenzar con la instalación de los compone
 
 ```mermaid
 flowchart LR
-    Argo["Argo CD"] --> Net["Cilium / Red"]
-    Net --> Cert["cert-manager"]
+    Net["Cilium / Red"] --> Argo["Argo CD"] 
+    Argo --> Cert["cert-manager"]
     Cert --> CertCDR["Cert Manager CDRs"]
     CertCDR --> Secrets["OpenBao / Vault"]
     Secrets --> Policies["Políticas / Configuración"]
