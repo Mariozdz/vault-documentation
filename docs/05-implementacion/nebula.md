@@ -181,7 +181,6 @@ flowchart LR
 
 Este enfoque es útil porque Vault no necesita conocer directamente la red Nebula. Para Vault, la comunicación llega como tráfico normal dentro del cluster.
 
----
 
 ## Configuración del cliente
 
@@ -347,7 +346,7 @@ Algunos puntos a revisar son:
 
 La implementación documentada representa una validación inicial de conectividad privada hacia Vault. Su propósito es demostrar que es posible acceder a Vault desde un entorno externo o cliente mediante una red overlay cifrada, sin exponer Vault públicamente.
 
-El alcance puede evolucionar por fases:
+El alcance puede evolucionar por fases (actualmente validado hasta fase 3):
 
 | Fase | Descripción |
 |---|---|

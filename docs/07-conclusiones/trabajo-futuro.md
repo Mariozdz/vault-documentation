@@ -1,0 +1,7 @@
+# Trabajo futuro
+
+1. Como trabajo futuro, se recomienda realizar pruebas controladas de autenticación, rotación de secretos, segmentación de red, resiliencia, auditoría, escenarios de fallo y análisis de cumplimiento frente a requisitos del caso de uso. Estas pruebas permitirían determinar con mayor precisión el nivel de madurez y aplicabilidad de la arquitectura en un entorno productivo. 
+
+2. Además, se plantea como una línea futura la ejecución de una validación operativa más amplia, considerando escenarios de alta disponibilidad, recuperación ante fallos, renovación automática de certificados, pérdida de conectividad entre entornos y comportamiento del sistema ante reinicios de componentes críticos como Vault, Argo CD, cert-manager, trust-manager, Cilium y Nebula en ambientes que repliquen producción.
+
+3. Asimismo, se recomienda extender la arquitectura hacia una integración automatizada de observabilidad y auditoría, manteniendo la misma línea de trabajo basada en GitOps. Esto incluiría la incorporación declarativa de herramientas para recolección de logs, métricas, eventos de red, auditoría de Vault y trazabilidad de accesos, con el fin de verificar que estos componentes puedan integrarse al marco de referencia sin romper su reproducibilidad, control de cambios y operación automatizada.

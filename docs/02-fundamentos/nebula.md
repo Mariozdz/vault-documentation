@@ -1,12 +1,5 @@
 # Conectividad privada con Nebula
 
-## Propósito de la sección
-
-Nebula se incorpora como una tecnología de conectividad privada que permite comunicar entornos distribuidos mediante una red overlay cifrada. En el contexto de una arquitectura orientada a Zero Trust, su función es reducir la necesidad de exponer servicios sensibles de forma pública y permitir que solo nodos autorizados puedan establecer comunicación entre sí.
-
-Esta sección presenta los fundamentos conceptuales de Nebula, su forma general de operación y las razones por las cuales puede utilizarse como una capa complementaria dentro de una arquitectura segura para la gestión de secretos.
-
-
 ## ¿Qué es Nebula?
 
 Nebula es una herramienta de red overlay que permite conectar hosts ubicados en distintas redes físicas o lógicas mediante túneles cifrados. Cada nodo que participa en la red Nebula posee una identidad criptográfica representada por un certificado emitido por una autoridad certificadora propia de Nebula.

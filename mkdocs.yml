@@ -53,5 +53,6 @@ nav:
       - Escenarios: 06-validacion/escenarios.md
       - Resultados: 06-validacion/resultados.md
   - Conclusiones:
+      - Resultados: 07-conclusiones/resultados.md
       - Conclusiones: 07-conclusiones/conclusiones.md
       - Trabajo futuro: 07-conclusiones/trabajo-futuro.md
